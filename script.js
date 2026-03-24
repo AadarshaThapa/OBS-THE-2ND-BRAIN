@@ -524,6 +524,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Timeline', meta: 'Section — Evolution of cinema', section: '#timeline', icon: '📅' },
     { title: 'Philosophy', meta: 'Section — Why cinema matters', section: '#philosophy', icon: '🎭' },
     { title: 'My Collection', meta: 'Section — Personal picks', section: '#my-collection', icon: '❤️' },
+    { title: 'Iconic Trailers', meta: 'Section — Essential viewing', section: '#trailers', icon: '▶️' },
+    { title: 'Blade Runner 2049 Trailer', meta: 'Trailer — Roger Deakins', section: '#trailers', icon: '▶️' },
+    { title: 'The Godfather Trailer', meta: 'Trailer — Gordon Willis', section: '#trailers', icon: '▶️' },
 
     // Decades
     { title: '1895 — The Birth of Cinema', meta: 'Timeline', section: '#timeline', icon: '📅' },

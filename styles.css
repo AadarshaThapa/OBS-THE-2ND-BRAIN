@@ -803,6 +803,68 @@ body.cinematic-mode .letterbox-bottom {
   box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.8);
 }
 
+/* Projector flicker overlay */
+.hero-projector-flicker {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  animation: projectorFlicker 4s steps(1) infinite;
+  mix-blend-mode: overlay;
+}
+
+@keyframes projectorFlicker {
+  0%, 100% { opacity: 0; }
+  3% { opacity: 0.04; background: rgba(201, 168, 76, 0.08); }
+  4% { opacity: 0; }
+  12% { opacity: 0.03; background: rgba(255, 255, 255, 0.05); }
+  13% { opacity: 0; }
+  27% { opacity: 0.05; background: rgba(201, 168, 76, 0.06); }
+  28% { opacity: 0; }
+  41% { opacity: 0.02; background: rgba(255, 230, 180, 0.07); }
+  42% { opacity: 0; }
+  56% { opacity: 0.04; background: rgba(201, 168, 76, 0.05); }
+  57% { opacity: 0; }
+  73% { opacity: 0.03; background: rgba(255, 255, 255, 0.04); }
+  74% { opacity: 0; }
+  88% { opacity: 0.05; background: rgba(201, 168, 76, 0.07); }
+  89% { opacity: 0; }
+}
+
+/* Light leak effect */
+.hero-light-leak {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 80%, rgba(201, 130, 50, 0.04) 0%, transparent 50%);
+  animation: lightLeak 8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes lightLeak {
+  0% {
+    opacity: 0.3;
+    background:
+      radial-gradient(ellipse at 15% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 80%, rgba(201, 130, 50, 0.04) 0%, transparent 50%);
+  }
+  50% {
+    opacity: 0.6;
+    background:
+      radial-gradient(ellipse at 25% 50%, rgba(220, 180, 80, 0.08) 0%, transparent 45%),
+      radial-gradient(ellipse at 75% 30%, rgba(201, 130, 50, 0.05) 0%, transparent 55%);
+  }
+  100% {
+    opacity: 0.4;
+    background:
+      radial-gradient(ellipse at 80% 15%, rgba(201, 168, 76, 0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 70%, rgba(220, 160, 60, 0.04) 0%, transparent 50%);
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -1543,6 +1605,87 @@ body.cinematic-mode .letterbox-bottom {
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.8;
+}
+
+/* --- Featured Trailers Section --- */
+#trailers {
+  padding: 8rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trailers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.trailer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.trailer-card:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.trailer-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.trailer-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.trailer-info {
+  padding: 1.5rem 2rem 2rem;
+}
+
+.trailer-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.trailer-meta {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.trailer-info p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .trailers-grid {
+    grid-template-columns: 1fr;
+  }
+  #trailers {
+    padding: 5rem 1.5rem;
+  }
 }
 
 /* --- My Collection Section --- */
